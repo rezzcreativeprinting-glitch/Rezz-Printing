@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sejarah perjalanan Rezz Printing, usaha percetakan yang berawal dari hobi dan dibangun dengan konsistensi.">
+  <title>Sejarah Rezz Printing</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #65717d;
+      --paper: #f5f7f8;
+      --white: #ffffff;
+      --accent: #d49a43;
+      --accent-dark: #9b6824;
+      --line: #e5e9ec;
+      --navy: #142333;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      line-height: 1.75;
+    }
+    .hero {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 82% 22%, rgba(212,154,67,.22), transparent 28%),
+        linear-gradient(125deg, #101d2b 0%, #1c3042 62%, #263b4c 100%);
+    }
+    .hero::before, .hero::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 50%;
+      width: 440px; height: 440px;
+      right: -100px; top: 80px;
+    }
+    .hero::after { width: 570px; height: 570px; right: -165px; top: 15px; }
+    .hero-inner {
+      width: min(1100px, calc(100% - 48px));
+      margin: 0 auto;
+      padding: 92px 0;
+      position: relative;
+      z-index: 1;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #f0c783;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 32px; height: 1px; background: var(--accent); }
+    h1 {
+      max-width: 760px;
+      margin: 20px 0 18px;
+      font-size: clamp(3rem, 8vw, 6.3rem);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 800;
+    }
+    h1 span { color: #e3b66f; }
+    .hero p {
+      max-width: 610px;
+      margin: 0;
+      color: #d1d9df;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 28px;
+      margin-top: 38px;
+      color: #f0f2f4;
+      font-size: .9rem;
+    }
+    .hero-meta span { display: inline-flex; align-items: center; gap: 9px; }
+    .hero-meta b { color: #e3b66f; font-weight: 700; }
+    main { width: min(1000px, calc(100% - 40px)); margin: -44px auto 0; position: relative; z-index: 2; }
+    .intro-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 35px;
+      padding: 38px 42px;
+      background: var(--white);
+      border-radius: 15px;
+      box-shadow: 0 18px 55px rgba(22,39,54,.09);
+    }
+    .intro-card h2, .section-heading h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.65rem, 3vw, 2.25rem);
+      line-height: 1.2;
+      letter-spacing: -.04em;
+    }
+    .intro-card p { margin: 0; color: var(--muted); }
+    .intro-side {
+      align-self: center;
+      padding-left: 28px;
+      border-left: 2px solid #e8d2ae;
+    }
+    .intro-side strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: -.05em;
+    }
+    .intro-side small { display: block; margin-top: 8px; color: var(--muted); }
+    section.content { padding: 88px 0 0; }
+    .section-heading { margin-bottom: 32px; }
+    .section-heading .eyebrow { color: var(--accent-dark); }
+    .section-heading p { max-width: 650px; margin: 10px 0 0; color: var(--muted); }
+    .timeline { position: relative; padding-left: 34px; }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px; top: 9px; bottom: 10px;
+      width: 1px; background: #d9c4a4;
+    }
+    .milestone { position: relative; padding: 0 0 34px 20px; }
+    .milestone:last-child { padding-bottom: 0; }
+    .milestone::before {
+      content: "";
+      position: absolute;
+      left: -32px; top: 8px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 4px solid var(--paper);
+      box-shadow: 0 0 0 1px #d8b77f;
+    }
+    .milestone .date {
+      color: var(--accent-dark);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+    .milestone h3 { margin: 5px 0 7px; font-size: 1.28rem; letter-spacing: -.02em; }
+    .milestone p { max-width: 760px; margin: 0; color: var(--muted); }
+    .feature {
+      margin-top: 72px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      align-items: center;
+      color: #edf2f5;
+      background: var(--navy);
+      border-radius: 16px;
+      overflow: hidden;
+      position: relative;
+    }
+    .feature::after {
+      content: "JINKA";
+      position: absolute;
+      right: -10px; bottom: -45px;
+      color: rgba(255,255,255,.035);
+      font-size: clamp(5rem, 14vw, 11rem);
+      font-weight: 900;
+      letter-spacing: -.08em;
+      pointer-events: none;
+    }
+    .feature .eyebrow { color: #e7bd7d; }
+    .feature h2 { margin: 12px 0; font-size: clamp(1.7rem, 3.4vw, 2.5rem); line-height: 1.15; letter-spacing: -.04em; }
+    .feature p { margin: 0; color: #bdc9d1; }
+    .machine-card {
+      min-height: 205px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 12px;
+      background: linear-gradient(145deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+      position: relative;
+      z-index: 1;
+    }
+    .machine-card .machine-label { color: #e7bd7d; font-size: .75rem; font-weight: 800; letter-spacing: .16em; }
+    .machine-card strong { margin-top: 7px; font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -.04em; }
+    .machine-card span:last-child { color: #bdc9d1; font-size: .9rem; }
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 28px;
+    }
+    .value {
+      padding: 25px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .value .number { color: var(--accent-dark); font-size: .78rem; font-weight: 800; letter-spacing: .12em; }
+    .value h3 { margin: 8px 0 6px; font-size: 1.12rem; }
+    .value p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .closing {
+      margin: 78px 0 0;
+      padding: 55px 30px;
+      text-align: center;
+      background: #eee8de;
+      border-radius: 16px;
+    }
+    .closing blockquote {
+      max-width: 730px;
+      margin: 0 auto;
+      color: #273442;
+      font-family: Georgia, serif;
+      font-size: clamp(1.45rem, 3vw, 2.2rem);
+      line-height: 1.4;
+      letter-spacing: -.025em;
+    }
+    .closing p { margin: 20px 0 0; color: #7b6b55; font-size: .82rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    footer {
+      padding: 34px 20px 42px;
+      text-align: center;
+      color: #87919a;
+      font-size: .82rem;
+    }
+    footer strong { color: var(--ink); letter-spacing: .08em; }
+    @media (max-width: 700px) {
+      .hero { min-height: 530px; }
+      .hero-inner { width: min(100% - 36px, 1100px); padding: 75px 0; }
+      main { width: calc(100% - 28px); margin-top: -28px; }
+      .intro-card { grid-template-columns: 1fr; padding: 28px 25px; gap: 22px; }
+      .intro-side { padding: 18px 0 0; border-left: 0; border-top: 2px solid #e8d2ae; }
+      section.content { padding-top: 65px; }
+      .feature { grid-template-columns: 1fr; padding: 30px 25px; gap: 24px; }
+      .values { grid-template-columns: 1fr; }
+      .closing { margin-top: 58px; padding: 42px 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">Sebuah perjalanan dan cerita</div>
+      <h1>Sejarah <span>Rezz</span> Printing</h1>
+      <p>Berawal dari hobi, tumbuh melalui keberanian untuk memulai, dan terus melangkah dengan konsistensi.</p>
+      <div class="hero-meta">
+        <span><b>17 Juli 2025</b> · Tahun berdiri</span>
+        <span><b>Kayu Aro</b> · Kerinci</span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <div>
+        <h2>Dimulai dari keberanian untuk mencoba.</h2>
+        <p>Rezz Printing merupakan usaha percetakan yang dibangun dari minat terhadap dunia kreatif dan percetakan. Perjalanannya dimulai dengan sederhana, bermodal terbatas, tetapi disertai tekad untuk terus belajar, berkembang, dan memberikan hasil terbaik.</p>
+      </div>
+      <div class="intro-side">
+        <strong>17.07.2025</strong>
+        <small>Tanggal berdirinya Rezz Printing</small>
+      </div>
+    </div>
+
+    <section class="content">
+      <div class="section-heading">
+        <div class="eyebrow">Jejak perjalanan</div>
+        <h2>Dari Rezz Creative hingga Rezz Printing</h2>
+        <p>Setiap tahap menjadi bagian dari proses membangun usaha yang lebih dikenal, lebih siap, dan terus berkembang.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="milestone">
+          <div class="date">Masa sekolah</div>
+          <h3>Berawal dari sebuah hobi</h3>
+          <p>Ketertarikan terhadap dunia desain dan percetakan telah tumbuh sejak masa sekolah menengah. Minat tersebut terus dibawa hingga menempuh pendidikan di SMK Negeri 1 Kerinci, jurusan Multimedia, yang kemudian berkembang menjadi Desain Komunikasi Visual (DKV).</p>
+        </article>
+        <article class="milestone">
+          <div class="date">17 Juli 2025</div>
+          <h3>Rezz Creative – Printing resmi berdiri</h3>
+          <p>Usaha ini mulai dibangun dengan nama “Rezz Creative – Printing”. Pada masa awal, Rezz Printing dirintis dengan modal yang sangat minim dan dijalankan ketika pemiliknya masih berusia 18 tahun, sekitar dua bulan setelah menyelesaikan pendidikan sekolah.</p>
+        </article>
+        <article class="milestone">
+          <div class="date">Perubahan nama</div>
+          <h3>Menjadi Rezz Printing</h3>
+          <p>Seiring berjalannya waktu, nama usaha disederhanakan menjadi “Rezz Printing”. Perubahan ini dilakukan agar nama lebih mudah diingat dan lebih praktis untuk disebut oleh pelanggan maupun masyarakat.</p>
+        </article>
+        <article class="milestone">
+          <div class="date">Proses perkembangan</div>
+          <h3>Bertumbuh melalui konsistensi</h3>
+          <p>Dengan konsistensi, kegigihan, dan kemauan untuk terus berkembang, Rezz Printing mulai membangun aset investasi berupa sejumlah peralatan percetakan. Salah satu pencapaian yang membanggakan adalah kepemilikan mesin cutting Jinka PE Pro 723.</p>
+        </article>
+        <article class="milestone">
+          <div class="date">Langkah berikutnya</div>
+          <h3>Membuka peluang yang lebih luas</h3>
+          <p>Rezz Printing memiliki harapan untuk ikut memajukan dunia percetakan di Kayu Aro. Ke depannya, usaha ini menargetkan agar produk dan layanannya dapat menjangkau pasar di luar pulau. Perkembangan selanjutnya akan menjadi bagian dari cerita Rezz Printing pada tahun-tahun mendatang.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="feature">
+      <div>
+        <div class="eyebrow">Salah satu pencapaian</div>
+        <h2>Investasi untuk terus berkembang.</h2>
+        <p>Di tengah perjalanan yang dibangun dari keterbatasan, bertambahnya peralatan menjadi bukti nyata dari proses dan usaha yang terus dijalankan. Mesin cutting ini menjadi salah satu aset yang dibanggakan sekaligus bekal untuk mengembangkan kemampuan produksi.</p>
+      </div>
+      <div class="machine-card">
+        <span class="machine-label">MESIN CUTTING</span>
+        <strong>Jinka PE Pro 723</strong>
+        <span>Salah satu aset investasi Rezz Printing</span>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="section-heading">
+        <div class="eyebrow">Nilai yang dijaga</div>
+        <h2>Fondasi dalam membangun usaha</h2>
+        <p>Mendirikan usaha bukan perkara mudah. Dibutuhkan lebih dari sekadar modal untuk membuatnya bertahan dan berkembang.</p>
+      </div>
+      <div class="values">
+        <article class="value">
+          <div class="number">01 / KETEKUNAN</div>
+          <h3>Konsistensi</h3>
+          <p>Menjalani proses secara berkelanjutan, meskipun perkembangan tidak selalu datang dengan cepat.</p>
+        </article>
+        <article class="value">
+          <div class="number">02 / KEBERANIAN</div>
+          <h3>Mental dan tekad</h3>
+          <p>Berani memulai dari kemampuan dan sumber daya yang tersedia, lalu terus belajar dari pengalaman.</p>
+        </article>
+        <article class="value">
+          <div class="number">03 / KEYAKINAN</div>
+          <h3>Visi ke depan</h3>
+          <p>Memiliki tujuan untuk bertumbuh dan membawa layanan percetakan lokal menjangkau pasar yang lebih luas.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="closing">
+      <blockquote>“Setiap usaha besar memiliki titik awal yang sederhana. Yang menjadikannya berarti adalah keberanian untuk memulai dan keteguhan untuk terus melangkah.”</blockquote>
+      <p>Rezz Printing · Terus bertumbuh</p>
+    </section>
+
+    <section class="content" style="padding-top:58px; padding-bottom:10px;">
+      <div class="section-heading">
+        <div class="eyebrow">Ucapan terima kasih</div>
+        <h2>Perjalanan ini tidak dibangun sendirian.</h2>
+        <p>Atas nama Rezz Printing, selaku pemilik usaha menyampaikan terima kasih yang sebesar-besarnya kepada kedua orang tua atas dukungan dan doa yang diberikan, kepada para guru yang pernah mengajar di SMK Negeri 1 Kerinci atas ilmu dan bimbingannya, serta kepada DPS Advertising yang telah menjadi salah satu inspirasi untuk memulai usaha di bidang percetakan.</p>
+        <p style="margin-top:16px;">Semoga Rezz Printing dapat terus berkembang, memberi manfaat, dan menjadi bagian dari kemajuan dunia percetakan di Kayu Aro.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>REZZ PRINTING</strong><br>
+    <span>Sejarah dan perjalanan usaha · Berdiri 17 Juli 2025</span>
+  </footer>
+</body>
+</html>
